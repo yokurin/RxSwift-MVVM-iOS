@@ -1,0 +1,6 @@
+framework module RxWebKit {
+  umbrella header "RxWebKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

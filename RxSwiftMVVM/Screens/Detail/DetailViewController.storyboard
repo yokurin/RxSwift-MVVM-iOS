@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n5P-gX-STW">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail View Controller-->
+        <scene sceneID="oTp-4t-iZV">
+            <objects>
+                <viewController id="n5P-gX-STW" customClass="DetailViewController" customModule="RxSwiftMVVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LBy-3Q-wx1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Z4-Hi-qbC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ciR-BR-OBd">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ciR-BR-OBd" firstAttribute="centerX" secondItem="LBy-3Q-wx1" secondAttribute="centerX" id="Bqp-4W-4Fj"/>
+                            <constraint firstAttribute="bottom" secondItem="4Z4-Hi-qbC" secondAttribute="bottom" id="EYE-Lu-127"/>
+                            <constraint firstItem="ciR-BR-OBd" firstAttribute="centerY" secondItem="LBy-3Q-wx1" secondAttribute="centerY" id="FcD-dj-qJy"/>
+                            <constraint firstItem="4Z4-Hi-qbC" firstAttribute="leading" secondItem="OaZ-vL-DMn" secondAttribute="leading" id="W06-pZ-N4g"/>
+                            <constraint firstItem="OaZ-vL-DMn" firstAttribute="trailing" secondItem="4Z4-Hi-qbC" secondAttribute="trailing" id="p6d-uN-Eqa"/>
+                            <constraint firstItem="4Z4-Hi-qbC" firstAttribute="top" secondItem="OaZ-vL-DMn" secondAttribute="top" id="yW3-iZ-74f"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OaZ-vL-DMn"/>
+                    </view>
+                    <connections>
+                        <outlet property="indicatorView" destination="ciR-BR-OBd" id="aEv-cb-SXF"/>
+                        <outlet property="webView" destination="4Z4-Hi-qbC" id="RCH-Mf-kbl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4By-Ak-Fvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="281" y="-244"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rRV-UW-VZB">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--List View Controller-->
+        <scene sceneID="54e-ut-sLe">
+            <objects>
+                <viewController id="rRV-UW-VZB" customClass="ListViewController" customModule="RxSwiftMVVM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sV1-Qb-mT7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f8W-lS-8uJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="re8-q4-yXb">
+                                <rect key="frame" x="197" y="837" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="f8W-lS-8uJ" secondAttribute="bottom" id="28B-Xi-3dq"/>
+                            <constraint firstItem="f8W-lS-8uJ" firstAttribute="leading" secondItem="Vkc-DF-3we" secondAttribute="leading" id="JSp-wT-Grq"/>
+                            <constraint firstItem="Vkc-DF-3we" firstAttribute="bottom" secondItem="re8-q4-yXb" secondAttribute="bottom" constant="5" id="NVh-go-pU3"/>
+                            <constraint firstItem="re8-q4-yXb" firstAttribute="centerX" secondItem="Vkc-DF-3we" secondAttribute="centerX" id="RJZ-pE-Fdx"/>
+                            <constraint firstItem="Vkc-DF-3we" firstAttribute="trailing" secondItem="f8W-lS-8uJ" secondAttribute="trailing" id="Tqr-Ei-RLM"/>
+                            <constraint firstItem="f8W-lS-8uJ" firstAttribute="top" secondItem="Vkc-DF-3we" secondAttribute="top" id="maw-Nl-9ch"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vkc-DF-3we"/>
+                    </view>
+                    <connections>
+                        <outlet property="indicatorView" destination="re8-q4-yXb" id="Xsf-k7-mlt"/>
+                        <outlet property="tableView" destination="f8W-lS-8uJ" id="aS5-b7-FBS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qnn-nz-QJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="161" y="19"/>
+        </scene>
+    </scenes>
+</document>

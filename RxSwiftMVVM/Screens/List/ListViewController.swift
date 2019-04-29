@@ -81,6 +81,13 @@ final class ListViewController: UIViewController {
 
         viewModel.inputs.fetchTrigger.onNext(())
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.indexPathsForSelectedRows?.forEach { [weak self] in
+            self?.tableView.deselectRow(at: $0, animated: true)
+        }
+    }
 }
 
 extension ListViewController: StoryboardInstantiable {}

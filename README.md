@@ -56,4 +56,4 @@ Tsubasa Hayashi, yoku.rin.99@gmail.com
 
 ## License
 
-RxSwiftVIPER is available under the MIT license. See the LICENSE file for more info.
+RxSwiftMVVM is available under the MIT license. See the LICENSE file for more info.

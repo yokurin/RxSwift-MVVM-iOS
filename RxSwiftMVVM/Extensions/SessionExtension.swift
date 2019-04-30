@@ -13,8 +13,8 @@ import APIKit
 extension Session: ReactiveCompatible {}
 
 extension Reactive where Base: Session {
-    func send<T: Request>(_ request: T) -> Single<T.Response> {
-        return Single<T.Response>.create { [weak base] observer -> Disposable in
+    func response<T: Request>(_ request: T) -> Observable<T.Response> {
+        return Observable<T.Response>.create { [weak base] observer -> Disposable in
             #if DEBUG
             print("------------ Start API Request ------------")
             print("url == \(request.baseURL.absoluteString)\(request.path)")
@@ -38,9 +38,10 @@ extension Reactive where Base: Session {
                     print("---------------------------------------------")
                     #endif
 
-                    observer(.success(value))
+                    observer.onNext(value)
+                    observer.onCompleted()
                 case .failure(let error):
-                    observer(.error(error))
+                    observer.onError(error)
                 }
             }
             return Disposables.create { task?.cancel() }

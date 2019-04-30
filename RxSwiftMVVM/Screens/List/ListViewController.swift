@@ -59,15 +59,15 @@ final class ListViewController: UIViewController {
 
         viewModel.outputs.isLoading
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] isLoading in
-                self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: isLoading ? 50 : 0, right: 0)
+            .subscribe(onNext: { [weak self] in
+                self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: $0 ? 50 : 0, right: 0)
             })
             .disposed(by: disposeBag)
 
         viewModel.outputs.error
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] isLoading in
-                let ac = UIAlertController(title: "Network Error", message: nil, preferredStyle: .alert)
+            .subscribe(onNext: { [weak self] in
+                let ac = UIAlertController(title: "Error \($0)", message: nil, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self?.present(ac, animated: true)
             })

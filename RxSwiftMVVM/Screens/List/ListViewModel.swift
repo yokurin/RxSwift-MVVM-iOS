@@ -18,10 +18,10 @@ protocol ListViewModelInputs {
 }
 
 protocol ListViewModelOutputs {
+    var navigationBarTitle: Observable<String> { get }
     var gitHubRepositories: Observable<[GitHubRepository]> { get }
     var isLoading: Observable<Bool> { get }
     var error: Observable<NSError> { get }
-    var navigationBarTitle: Observable<String> { get }
 }
 
 protocol ListViewModelType {
@@ -37,23 +37,21 @@ final class ListViewModel: ListViewModelType, ListViewModelInputs, ListViewModel
     // MARK: - Inputs
     let fetchTrigger = PublishSubject<Void>()
     let reachedBottomTrigger = PublishSubject<Void>()
-    private let language: String
     private let page = BehaviorRelay<Int>(value: 1)
 
     // MARK: - Outputs
+    let navigationBarTitle: Observable<String>
     let gitHubRepositories: Observable<[GitHubRepository]>
     let isLoading: Observable<Bool>
     let error: Observable<NSError>
-    let navigationBarTitle: Observable<String>
 
     private let searchAction: Action<Int, [GitHubRepository]>
     private let disposeBag = DisposeBag()
 
     init(language: String) {
-        self.language = language
         self.navigationBarTitle = Observable.just("\(language) Repositories")
         self.searchAction = Action { page in
-            return Session.shared.rx.send(GitHubApi.SearchRequest(language: language, page: page))
+            return Session.shared.rx.response(GitHubApi.SearchRequest(language: language, page: page))
         }
         let response = BehaviorRelay<[GitHubRepository]>(value: [])
         self.gitHubRepositories = response.asObservable()
@@ -77,6 +75,7 @@ final class ListViewModel: ListViewModelType, ListViewModelInputs, ListViewModel
             .withLatestFrom(page)
             .bind(to: searchAction.inputs)
             .disposed(by: disposeBag)
+
         reachedBottomTrigger
             .withLatestFrom(isLoading)
             .filter { !$0 }
